@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import asyncComponent from './components/AsyncComponent';
+
+import Demo from './containers/Demo';
 import './App.css';
+
+const MyAsync = asyncComponent(()=> import('./containers/My'));
+const CardPackageAsync = asyncComponent(()=> import('./containers/CardPackage'));
+const CardListAsync = asyncComponent(()=> import('./containers/CardList'));
+const CardDetailAsync = asyncComponent(()=> import('./containers/CardDetail'));
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Demo}/>
+            <Route exact path="/my" component={MyAsync}/>
+            <Route exact path="/card-package" component={CardPackageAsync}/>
+            <Route exact path="/card-list" component={CardListAsync}/>
+            <Route exact path="/card-detail/:cardId" component={CardDetailAsync}/>
+          </Switch>
+        </Router>
       </div>
     );
   }

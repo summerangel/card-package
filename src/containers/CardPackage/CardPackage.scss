@@ -1,0 +1,27 @@
+@import "../../scss/mixins";
+
+.card-package-wrapper {
+  background-color: #efeef2;
+  .bar-wrap {
+    background-color: #ffffff;
+    border-bottom: px2rem(1) solid #e6e5e5;
+    margin-bottom: px2rem(20);
+  }
+  .bar-wrap__icon {
+    width: px2rem(27);
+    height: px2rem(20);
+    margin-right: px2rem(10);
+  }
+  .bar-wrap__card {
+    padding-left: px2rem(15);
+    padding-right: px2rem(15);
+  }
+
+  .bar-list {
+    background-color: #ffffff;
+    border-bottom: px2rem(1) solid #e6e5e5;
+  }
+  .bar-list__custom {
+    padding: px2rem(35) px2rem(15) px2rem(35) 0;
+  }
+}

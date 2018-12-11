@@ -1,0 +1,29 @@
+@import "../../scss/mixins";
+
+.card-item {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: px2rem(20) px2rem(15);
+  color: #ffffff;
+  border-radius: px2rem(4);
+  margin-bottom: px2rem(10);
+  & > img {
+    width: px2rem(50);
+    height: px2rem(50);
+    border-radius: px2rem(50);
+    border: px2rem(2) solid #ffffff;
+    margin-right: px2rem(15);
+  }
+  &__shop {
+    text-align: left;
+    & > h4 {
+      font-size: px2rem(14);
+    }
+    & > p {
+      font-size: px2rem(24);
+    }
+  }
+}

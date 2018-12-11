@@ -1,0 +1,38 @@
+@import "../../scss/mixins";
+
+.bar-item {
+  margin-left: px2rem(15);
+  padding: px2rem(15) px2rem(15) px2rem(15) 0;
+  font-size: px2rem(16);
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .bar-item__left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .bar-item__right {
+    position: relative;
+    color: #666;
+    padding-right: px2rem(15);
+    &:after {
+      display: inline-block;
+      content: '';
+      height: px2rem(9);
+      width: px2rem(9);
+      border-width: px2rem(2) px2rem(2) 0 0;
+      border-color: #D6D6D6;
+      border-style: solid;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: px2rem(-5);
+      transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    }
+  }
+  &.border-bottom {
+    border-bottom: px2rem(1) solid #e6e5e5;
+  }
+}

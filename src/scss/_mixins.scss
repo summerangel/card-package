@@ -1,0 +1,44 @@
+@import './_variables.scss';
+
+@mixin title-block {
+  @include title-border-bottom;
+}
+
+@mixin title-content($fontSize: 1rem, $lineHeight: 1.45rem) {
+  padding-left: 10px;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  @include title-border-left;
+}
+
+@mixin title-border-bottom {
+  border-bottom: solid 0.5px $grey-line;
+}
+
+@mixin title-border-left {
+  border-left: solid 0.21rem $qsl-yellow;
+}
+
+@mixin title-style($fontSize: 1.29rem, $lineHeight: 1.79rem) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+}
+
+@mixin item-key-item($fontSize: 14px, $color: $gray-light, $lineHeight: 14px) {
+  @include item-key-value-style($fontSize, $color, $lineHeight);
+}
+
+@mixin item-value-item($fontSize: 14px, $color: #212121, $lineHeight: 14px) {
+  @include item-key-value-style($fontSize, $color, $lineHeight);
+}
+
+@mixin item-key-value-style($fontSize: 14px, $color: $gray-light, $lineHeight: 14px) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $color;
+}
+
+@function px2rem($px) {
+  $rem: 16;
+  @return ($px/$rem) + rem;
+}

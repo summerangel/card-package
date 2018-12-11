@@ -1,0 +1,64 @@
+@import 'variables';
+@import 'mixins';
+
+.c-666 {
+  color: $gray;
+}
+
+.c-theme {
+  color: $theme-color;
+}
+
+.c-333 {
+  color: $color-base;
+}
+
+.c-999 {
+  color: $gray-light;
+}
+
+.c-red {
+  color: $red;
+}
+
+.c-green {
+  color: $green;
+}
+
+.px-5 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.px-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+// padding-top
+.pt-44 {
+  padding-top: px2rem(44);
+}
+
+.pt-64 {
+  padding-top: $pixel-64;
+}
+
+// font-size
+.font-10 {
+  font-size: $pixel-10;
+}
+.font-20 {
+  font-size: $pixel-20;
+}
+.font-40 {
+  font-size: px2rem(40);
+}
+
+.borderTop {
+  border-top: px2rem(1) solid #f6f6f6;
+}
+
+.bold {
+  font-weight: bold;
+}

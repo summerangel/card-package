@@ -1,0 +1,79 @@
+@import "../../scss/mixins";
+
+.card-detail-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+  .card {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-left: px2rem(30);
+    margin-right: px2rem(30);
+    margin-top: px2rem(30);
+    padding: px2rem(20) px2rem(20) px2rem(25) px2rem(20);
+    height: px2rem(168);
+    border-radius: px2rem(12);
+    position: relative;
+  }
+  .card__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .1);
+    z-index: 1;
+  }
+  .card__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    z-index: 2;
+    & > img {
+      width: px2rem(30);
+      height: px2rem(30);
+      z-index: 2;
+    }
+  }
+  .card__info__shop {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    z-index: 2;
+    & > img {
+      width: px2rem(50);
+      height: px2rem(50);
+      border-radius: px2rem(50);
+      margin-right: px2rem(10);
+      z-index: 2;
+    }
+  }
+  .card__info__no {
+    position: absolute;
+    bottom: px2rem(30);
+    left: px2rem(20);
+    color: #ffffff;
+    z-index: 2;
+  }
+  .point-coupon {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: px2rem(20) px2rem(20) px2rem(30) px2rem(20);
+  }
+  .point-coupon__each {
+    flex: 1;
+    color: #666;
+  }
+  .point-coupon__each__num {
+    font-size: px2rem(20);
+    color: #6b957b;
+  }
+  .verticle-line {
+    width: px2rem(1);
+    height: px2rem(60);
+    background-color: #e4e4e4;
+  }
+}
