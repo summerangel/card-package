@@ -2,7 +2,7 @@
  * Created by summer on 2018/12/11.
  */
 import React, { Component } from 'react';
-import BarItem from '../../components/BarItem';
+import BarItem from '../../components/BarItem/BarItem';
 
 import './CardDetail.scss';
 

@@ -2,8 +2,8 @@
  * Created by summer on 2018/12/11.
  */
 import React, { Component } from 'react';
-import BarItem from '../../components/BarItem';
-import CardItem from '../../components/CardItem';
+import BarItem from '../../components/BarItem/BarItem';
+import CardItem from '../../components/CardItem/CardItem';
 
 import './CardPackage.scss';
 
@@ -31,7 +31,7 @@ const CARD_LIST = [
 export default class CardPackage extends Component {
 
     handleLinkGo = () => {
-        window.location.href = '/card-list';
+        window.location.href = '/card/card-list';
     };
 
     render() {

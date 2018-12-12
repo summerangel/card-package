@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import asyncComponent from './components/AsyncComponent';
+import asyncComponent from './components/AsyncComponent/AsyncComponent';
 
-import Demo from './containers/Demo';
+import Demo from './containers/Demo/Demo';
 import './App.css';
 
-const MyAsync = asyncComponent(()=> import('./containers/My'));
-const CardPackageAsync = asyncComponent(()=> import('./containers/CardPackage'));
-const CardListAsync = asyncComponent(()=> import('./containers/CardList'));
-const CardDetailAsync = asyncComponent(()=> import('./containers/CardDetail'));
+const MyAsync = asyncComponent(()=> import('./containers/My/My.js'));
+const CardPackageAsync = asyncComponent(()=> import('./containers/CardPackage/CardPackage.js'));
+const CardListAsync = asyncComponent(()=> import('./containers/CardList/CardList.js'));
+const CardDetailAsync = asyncComponent(()=> import('./containers/CardDetail/CardDetail.js'));
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router>
+        <Router basename="/card">
           <Switch>
-            <Route exact path="/" component={Demo}/>
+            <Route exact path="/" component={MyAsync}/>
             <Route exact path="/my" component={MyAsync}/>
             <Route exact path="/card-package" component={CardPackageAsync}/>
             <Route exact path="/card-list" component={CardListAsync}/>

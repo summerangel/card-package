@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './scss/index.scss';
-import 'weui';
-import 'react-weui/build/packages/react-weui.css';
+// import 'weui';
+// import 'react-weui/build/packages/react-weui.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

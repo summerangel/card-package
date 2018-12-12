@@ -2,7 +2,7 @@
  * Created by summer on 2018/12/11.
  */
 import React, { Component } from 'react';
-import CardItem from '../../components/CardItem';
+import CardItem from '../../components/CardItem/CardItem';
 import './CardList.scss';
 
 const CARD_LIST = [
@@ -53,7 +53,7 @@ const CARD_LIST = [
 export default class CardList extends Component {
 
     handleClickGo = (id) => {
-        window.location.href = `/card-detail/${id}`;
+        window.location.href = `/card/card-detail/${id}`;
     };
 
     render() {

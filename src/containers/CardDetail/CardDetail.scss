@@ -49,6 +49,9 @@
       margin-right: px2rem(10);
       z-index: 2;
     }
+    p {
+      margin-top: px2rem(5);
+    }
   }
   .card__info__no {
     position: absolute;
@@ -66,6 +69,9 @@
   .point-coupon__each {
     flex: 1;
     color: #666;
+    p:first-child {
+      margin-bottom: px2rem(10);
+    }
   }
   .point-coupon__each__num {
     font-size: px2rem(20);
