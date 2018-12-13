@@ -8,7 +8,9 @@ import './App.css';
 const MyAsync = asyncComponent(()=> import('./containers/My/My.js'));
 const CardPackageAsync = asyncComponent(()=> import('./containers/CardPackage/CardPackage.js'));
 const CardListAsync = asyncComponent(()=> import('./containers/CardList/CardList.js'));
+const CouponListAsync = asyncComponent(()=> import('./containers/CouponList/CouponList.js'));
 const CardDetailAsync = asyncComponent(()=> import('./containers/CardDetail/CardDetail.js'));
+const MyAccountAsync = asyncComponent(()=> import('./containers/MyAccount/MyAccount.js'));
 
 class App extends Component {
   render() {
@@ -18,8 +20,10 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={MyAsync}/>
             <Route exact path="/my" component={MyAsync}/>
+            <Route exact path="/my-account" component={MyAccountAsync}/>
             <Route exact path="/card-package" component={CardPackageAsync}/>
             <Route exact path="/card-list" component={CardListAsync}/>
+            <Route exact path="/coupon-list" component={CouponListAsync}/>
             <Route exact path="/card-detail/:cardId" component={CardDetailAsync}/>
           </Switch>
         </Router>

@@ -30,36 +30,38 @@ const CARD_LIST = [
 
 export default class CardPackage extends Component {
 
-    handleLinkGo = () => {
-        window.location.href = '/card/card-list';
+    handleLinkGo = (url) => {
+        window.location.href = url;
     };
 
     render() {
         return (
             <div className="card-package-wrapper">
-                <div className="bar-wrap">
-                    <BarItem
-                        title={'卡包'}
-                        iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/card_two_icon.jpg')} alt=""/>}
-                        rightPart={<span>查看全部(9)</span>}
-                        onLinkGo={this.handleLinkGo}
-                    />
-                    <div className="bar-wrap__card">
-                        {
-                            CARD_LIST.map((card, index) => {
-                                return (
-                                    <CardItem
-                                        key={index}
-                                        name={card.name}
-                                        bgStyle={{
-                                            backgroundImage: `url(${require('../../assets/' + card.url)})`
-                                        }}
-                                        logoIcon={require('../../assets/'+ card.logoUrl)}
-                                        describe={card.describe}
-                                    />
-                                )
-                            })
-                        }
+                {/*<div className="bar-wrap">*/}
+                    {/*<BarItem*/}
+                        {/*title={'卡包'}*/}
+                        {/*iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/card_two_icon.jpg')} alt=""/>}*/}
+                        {/*rightPart={<span>查看全部(9)</span>}*/}
+                        {/*onLinkGo={() => {*/}
+                          {/*this.handleLinkGo('/card/card-list')*/}
+                        {/*}}*/}
+                    {/*/>*/}
+                    {/*<div className="bar-wrap__card">*/}
+                        {/*{*/}
+                            {/*CARD_LIST.map((card, index) => {*/}
+                                {/*return (*/}
+                                    {/*<CardItem*/}
+                                        {/*key={index}*/}
+                                        {/*name={card.name}*/}
+                                        {/*bgStyle={{*/}
+                                            {/*backgroundImage: `url(${require('../../assets/' + card.url)})`*/}
+                                        {/*}}*/}
+                                        {/*logoIcon={require('../../assets/'+ card.logoUrl)}*/}
+                                        {/*describe={card.describe}*/}
+                                    {/*/>*/}
+                                {/*)*/}
+                            {/*})*/}
+                        {/*}*/}
                         {/*<div className="bar-wrap__card__item" style={{*/}
                             {/*backgroundImage: `url(${require('../../assets/gap.jpeg')})`*/}
                         {/*}}>*/}
@@ -87,20 +89,30 @@ export default class CardPackage extends Component {
                                 {/*<p>会员卡</p>*/}
                             {/*</div>*/}
                         {/*</div>*/}
-                    </div>
-                </div>
+                    {/*</div>*/}
+                {/*</div>*/}
                 <div className="bar-list">
+                    <BarItem
+                      title={'卡包'}
+                      customStyle={'bar-list__custom'}
+                      hasBottom={true}
+                      iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/card_two_icon.jpg')} alt=""/>}
+                      // rightPart={<span>查看全部(9)</span>}
+                      onLinkGo={() => {
+                        this.handleLinkGo('/card/card-list')
+                      }}
+                    />
                     <BarItem
                         title={'我的票券'}
                         iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/coupon_icon.jpg')} alt=""/>}
                         customStyle={'bar-list__custom'}
-                        hasBottom={true}
+                        onLinkGo={() => this.handleLinkGo('/card/coupon-list')}
                     />
-                    <BarItem
-                        title={'朋友的优惠券'}
-                        iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/discount_coupon.jpg')} alt=""/>}
-                        customStyle={'bar-list__custom'}
-                    />
+                    {/*<BarItem*/}
+                        {/*title={'朋友的优惠券'}*/}
+                        {/*iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/discount_coupon.jpg')} alt=""/>}*/}
+                        {/*customStyle={'bar-list__custom'}*/}
+                    {/*/>*/}
                 </div>
             </div>
         )

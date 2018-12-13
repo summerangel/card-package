@@ -8,8 +8,8 @@ import './My.scss';
 
 export default class My extends Component {
 
-    handleCardLink = () => {
-        window.location.href = '/card/card-package';
+    handleCardLink = (url) => {
+        window.location.href = url;
     };
 
     render() {
@@ -31,13 +31,13 @@ export default class My extends Component {
                 <div className="bar-wrap">
                     <BarItem
                         title={'账户'}
-                        onLinkGo={this.handleCardLink}
+                        onLinkGo={() => this.handleCardLink('/card/my-account')}
                         iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/card_icon.jpg')} alt=""/>}
                         hasBottom={true}
                     />
                   <BarItem
                     title={'卡包'}
-                    onLinkGo={this.handleCardLink}
+                    onLinkGo={() => this.handleCardLink('/card/card-package')}
                     iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/card_icon.jpg')} alt=""/>}
                   />
                 </div>

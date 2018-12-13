@@ -1,0 +1,29 @@
+@import "../../scss/mixins";
+
+.coupon-item {
+  display: flex;
+  justify-content:flex-start;
+  align-items: center;
+  margin-bottom: px2rem(10);
+  border: px2rem(1) solid #e8e8e8;
+  .coupon-item__money {
+    background-color: #e4e4e4;
+    width: px2rem(100);
+    height: px2rem(80);
+    line-height: px2rem(80);
+    margin-right: px2rem(10);
+    font-size: px2rem(26);
+    color: #ffffff;
+  }
+  .coupon-item__info {
+    text-align: left;
+    & > h4 {
+      color: #333333;
+      margin-bottom: px2rem(5);
+    }
+    & > p {
+      color: #999999;
+      font-size: px2rem(12);
+    }
+  }
+}
