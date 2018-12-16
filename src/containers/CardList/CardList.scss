@@ -1,6 +1,7 @@
 @import "../../scss/mixins";
 
 .card-list-wrapper {
+  padding-top: px2rem(15);
   .card {
     padding-left: px2rem(15);
     padding-right: px2rem(15);

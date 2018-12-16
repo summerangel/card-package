@@ -3,6 +3,29 @@ input {
   outline: none;
 }
 
+
+
+// 底部按钮
+.btn-wrap {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  .bottom-btn {
+    background-color: #ffde00;
+    border-radius: 4px;
+    padding-top: 13px;
+    padding-bottom: 12px;
+    color: #333333;
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 15px 10px 15px;
+    cursor: pointer;
+  }
+}
+
 // 上下分割
 .divider {
   width: 100%;

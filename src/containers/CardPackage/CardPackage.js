@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import BarItem from '../../components/BarItem/BarItem';
 import CardItem from '../../components/CardItem/CardItem';
+import api, { request } from '../../utils/request';
 
 import './CardPackage.scss';
 
@@ -29,12 +30,36 @@ const CARD_LIST = [
 ];
 
 export default class CardPackage extends Component {
+    state = {
+      cardNum: 0,
+      couponNum: 0
+    };
+
+    componentDidMount() {
+      this.fetchCardOverview();
+    }
+
+    fetchCardOverview = () => {
+      request.post(api.GW_INTERACT_API, {serviceName: 'cardOverview'})
+        .then(res => {
+          if (res) {
+            this.setState({
+              cardNum: res.cardNum,
+              couponNum: res.couponNum
+            })
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        })
+    };
 
     handleLinkGo = (url) => {
         window.location.href = url;
     };
 
     render() {
+      const { cardNum, couponNum } = this.state;
         return (
             <div className="card-package-wrapper">
                 {/*<div className="bar-wrap">*/}
@@ -93,7 +118,7 @@ export default class CardPackage extends Component {
                 {/*</div>*/}
                 <div className="bar-list">
                     <BarItem
-                      title={'卡包'}
+                      title={`卡包(${cardNum})`}
                       customStyle={'bar-list__custom'}
                       hasBottom={true}
                       iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/card_two_icon.jpg')} alt=""/>}
@@ -103,7 +128,7 @@ export default class CardPackage extends Component {
                       }}
                     />
                     <BarItem
-                        title={'我的票券'}
+                        title={`我的票券(${couponNum})`}
                         iconPart={<img className="bar-wrap__icon" src={require('../../assets/icon/coupon_icon.jpg')} alt=""/>}
                         customStyle={'bar-list__custom'}
                         onLinkGo={() => this.handleLinkGo('/card/coupon-list')}

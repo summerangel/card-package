@@ -1,0 +1,91 @@
+@import "../../scss/mixins";
+@import "../../scss/utilities";
+
+.mock-page-wrapper {
+  .welcome {
+    text-align: left;
+    padding-top: px2rem(60);
+    margin-left: px2rem(30);
+    color: #333333;
+    & > h3 {
+      font-size: px2rem(36);
+      margin: 0;
+    }
+    & > p {
+      font-size: px2rem(18);
+      margin-top: px2rem(15);
+    }
+  }
+  .module {
+    margin: px2rem(30) px2rem(30) 0 px2rem(30);
+    padding-top: px2rem(10);
+    padding-bottom: px2rem(10);
+    text-align: left;
+    border-bottom: px2rem(1) solid #BBBBBB;
+    color: #BBBBBB;
+    & > input {
+      margin-left: px2rem(10);
+      font-size: px2rem(16);
+      &::placeholder {
+        color: #BBBBBB;
+        font-size: px2rem(16);
+      }
+    }
+  }
+  .code-wrap {
+    margin: px2rem(30) px2rem(30) 0 px2rem(30);
+    padding-top: px2rem(10);
+    padding-bottom: px2rem(10);
+    text-align: left;
+    border-bottom: px2rem(1) solid #BBBBBB;
+    color: #BBBBBB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .code-wrap__input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    & > input {
+      margin-left: px2rem(10);
+      font-size: px2rem(16);
+      width: px2rem(120);
+      &::placeholder {
+        color: #BBBBBB;
+        font-size: px2rem(16);
+      }
+    }
+  }
+  .code-wrap__code {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    & > span {
+      font-size: px2rem(15);
+      color: #333333;
+      &:first-child {
+        margin-right: px2rem(10);
+        color: #BBBBBB;
+      }
+    }
+  }
+
+  // 底部按钮
+  .register-wrap {
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: px2rem(30);
+    .bottom-btn {
+      background-color: #ffde00;
+      border-radius: px2rem(4);
+      padding-top: px2rem(10);
+      padding-bottom: px2rem(10);
+      color: #333333;
+      font-size: px2rem(18);
+      text-align: center;
+      margin: 0 px2rem(30) px2rem(30) px2rem(30);
+      cursor: pointer;
+    }
+  }
+}

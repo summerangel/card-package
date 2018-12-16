@@ -2,9 +2,10 @@
  * Created by summer on 2018/12/11.
  */
 import React, { Component } from 'react';
+import { isEmpty } from 'lodash';
 import classnames from 'classnames';
-// import CardItem from '../../components/CardItem/CardItem';
 import CouponItem from '../../components/CouponItem/CouponItem';
+import api, { request } from '../../utils/request';
 
 import './CouponList.scss';
 
@@ -61,7 +62,27 @@ const CARD_LIST = [
 
 export default class CardList extends Component {
   state = {
-    currIndex: 0
+    currIndex: 0,
+    couponList: []
+  };
+
+  componentDidMount() {
+    this.fetchCouponList();
+  };
+
+  fetchCouponList = () => {
+    request.post(api.GW_INTERACT_API, {serviceName: 'couponList'})
+      .then(res => {
+        if (!isEmpty(res)) {
+          console.log(res);
+          this.setState({
+            couponList: res
+          })
+        }
+      })
+      .catch(e => {
+        console.log(e);
+      })
   };
 
   handleClickGo = (id) => {

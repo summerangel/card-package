@@ -63,4 +63,11 @@
     height: px2rem(26);
     margin-right: px2rem(10);
   }
+
+  .btn-wrap {
+    .bottom-btn {
+      background-color: #ffffff;
+      border: px2rem(1) solid #BBBBBB;
+    }
+  }
 }

@@ -2,7 +2,9 @@
  * Created by summer on 2018/12/11.
  */
 import React, { Component } from 'react';
+import { isEmpty } from 'lodash';
 import CardItem from '../../components/CardItem/CardItem';
+import api, { request } from '../../utils/request';
 import './CardList.scss';
 
 const CARD_LIST = [
@@ -51,28 +53,51 @@ const CARD_LIST = [
 ];
 
 export default class CardList extends Component {
+    state = {
+      cardList: []
+    };
+
+    componentDidMount() {
+      this.fetchCardList();
+    }
+
+    fetchCardList = () => {
+      request.post(api.GW_INTERACT_API, {serviceName: 'cardList'})
+        .then(res => {
+          if (!isEmpty(res)) {
+            this.setState({
+              cardList: res
+            })
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        })
+    };
 
     handleClickGo = (id) => {
         window.location.href = `/card/card-detail/${id}`;
     };
 
     render() {
+        let { cardList } = this.state;
         return (
             <div className="card-list-wrapper">
                 <div className="card">
                     {
-                        CARD_LIST.map((card, index) => {
+                        !isEmpty(cardList) && cardList.map((card, index) => {
                             return (
                                 <CardItem
                                     key={index}
-                                    name={card.name}
+                                    name={card.issuerName}
                                     bgStyle={{
-                                        backgroundImage: `url(${require('../../assets/' + card.url)})`
+                                        // backgroundImage: `url(${require('../../assets/' + card.url)})`
+                                        backgroundImage: `url(${card.cardUrl})`
                                     }}
-                                    logoIcon={require('../../assets/'+ card.logoUrl)}
-                                    describe={card.describe}
+                                    logoIcon={card.logoUrl}
+                                    describe={card.cardName}
                                     onClickGo={()=>{
-                                        this.handleClickGo(card.cardId);
+                                        this.handleClickGo(card.cardNo);
                                     }}
                                 />
                             )
