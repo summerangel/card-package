@@ -20,6 +20,10 @@ export default class CouponItem extends Component {
       PropTypes.string
     ]),
     name: PropTypes.string,
+    amount: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ]),
     validdate: PropTypes.string,
     onClickGo: PropTypes.func
   };
@@ -30,18 +34,19 @@ export default class CouponItem extends Component {
     },
     logoIcon: require('../../assets/gapLogo.jpeg'),
     name: '',
+    amount: 0,
     validdate: '',
     onClickGo: ()=>{}
   };
 
   render() {
-    const { name, validdate, onClickGo } = this.props;
+    const { name, amount, validdate, onClickGo } = this.props;
     return (
       <div className="coupon-item" onClick={(e)=>{
         e.preventDefault();
         onClickGo();
       }}>
-        <div className="coupon-item__money">￥20</div>
+        <div className="coupon-item__money">￥{amount}</div>
         <div className="coupon-item__info">
           <h4>{name}</h4>
           <p>有效期：{validdate}</p>

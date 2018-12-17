@@ -63,7 +63,9 @@ const CARD_LIST = [
 export default class CardList extends Component {
   state = {
     currIndex: 0,
-    couponList: []
+    couponList: [],
+    holdList: [],
+    writeOffList: []
   };
 
   componentDidMount() {
@@ -76,7 +78,9 @@ export default class CardList extends Component {
         if (!isEmpty(res)) {
           console.log(res);
           this.setState({
-            couponList: res
+            couponList: res,
+            holdList: res.HOLD,
+            writeOffList: res.WRITEOFF
           })
         }
       })
@@ -96,35 +100,59 @@ export default class CardList extends Component {
   };
 
   render() {
-    const { currIndex } = this.state;
+    const { currIndex, holdList, writeOffList } = this.state;
     return (
       <div className="coupon-list-wrapper">
         <div className="status">
                   <span className={classnames('status__each', {active: currIndex === 0})} onClick={(e) => {
                     e.preventDefault();
                     this.handleStatusChange(0);
-                  }}>未使用(0)</span>
+                  }}>未使用({holdList.length})</span>
           <span className={classnames('status__each', {active: currIndex === 1})} onClick={(e) => {
             e.preventDefault();
             this.handleStatusChange(1);
-          }}>使用记录(35)</span>
+          }}>使用记录({writeOffList.length})</span>
         </div>
-        <div className="card">
-          {
-            CARD_LIST.map((card, index) => {
-              return (
-                <CouponItem
-                  key={index}
-                  name={card.name}
-                  validdate={card.validdate}
-                  onClickGo={()=>{
-                    this.handleClickGo(card.cardId);
-                  }}
-                />
-              )
-            })
-          }
-        </div>
+        {
+          currIndex === 0 &&
+          <div className="card">
+            {
+              !isEmpty(holdList) && holdList.map((card, index) => {
+                return (
+                  <CouponItem
+                    key={index}
+                    name={card.issuerName}
+                    amount={card.amount}
+                    validdate={`${card.validateBeginDate}~${card.validateEndDate}`}
+                    onClickGo={()=>{
+                      this.handleClickGo(card.couponNo);
+                    }}
+                  />
+                )
+              })
+            }
+          </div>
+        }
+        {
+          currIndex === 1 &&
+          <div className="card">
+            {
+              !isEmpty(writeOffList) && writeOffList.map((card, index) => {
+                return (
+                  <CouponItem
+                    key={index}
+                    name={card.issuerName}
+                    amount={card.amount}
+                    validdate={`${card.validateBeginDate}~${card.validateEndDate}`}
+                    onClickGo={()=>{
+                      this.handleClickGo(card.couponNo);
+                    }}
+                  />
+                )
+              })
+            }
+          </div>
+        }
       </div>
     )
   }
