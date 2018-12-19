@@ -2,12 +2,15 @@
  * Created by summer on 2018/12/16.
  */
 import React, { Component } from 'react';
+import sha256 from 'crypto-js/sha256';
 import api, { request } from '../../utils/request';
 import PhoneIcon from '../../components/Icon/PhoneIcon';
 import CodeIcon from '../../components/Icon/CodeIcon';
 
 import './Register.scss';
 
+const PRIVATE_KEY = 'pqbe211ctqfbqo8ks3p3o7b82p01dygd679xd6iwwi0kajcgvlwzyk3mgcm69w82';
+const TOKEN = 'token';
 export default class Register extends Component {
   state = {
     mobileNo: '',
@@ -39,8 +42,9 @@ export default class Register extends Component {
         mobileNo: this.state.mobileNo,
         bizCode: 'REGISTRATION'
       };
+      const sign = sha256(JSON.stringify(params) + PRIVATE_KEY);
       request
-        .post(api.GW_INTERACT_API, params)
+        .post(api.GW_INTERACT_API, params, {headers: { sign, token: '' } })
         .then(res => {
           if (res) {
             this.setState({
@@ -73,10 +77,12 @@ export default class Register extends Component {
       verifyCodeId: this.state.verifyCodeId,
       verifyCodeValue: this.state.verifyCodeValue
     };
+    const sign = sha256(JSON.stringify(params) + PRIVATE_KEY);
     request
-      .post(api.GW_INTERACT_API, params, {allData: 1})
+      .post(api.GW_INTERACT_API, params, {allData: 1, headers: { sign, token: '' } })
       .then(res => {
         if (res.responseCode === '000') {
+          localStorage.setItem(TOKEN, res.data.token);
           alert('注册成功');
           window.location.href = '/card/my';
         } else if (res.responseCode === 'mbr00') {
@@ -98,10 +104,12 @@ export default class Register extends Component {
       verifyCodeId: this.state.verifyCodeId,
       verifyCodeValue: this.state.verifyCodeValue
     };
+    const sign = sha256(JSON.stringify(params) + PRIVATE_KEY);
     request
-      .post(api.GW_INTERACT_API, params)
+      .post(api.GW_INTERACT_API, params, { headers: { sign, token: '' }})
       .then(res => {
         if (res) {
+          localStorage.setItem(TOKEN, res.token);
           window.location.href = '/card/my';
         }
       })

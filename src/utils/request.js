@@ -7,15 +7,18 @@ import { isEmpty, isString } from 'lodash';
 import api from '../api/index';
 
 const NETWORK_ERROR = '网络连接异常';
+const TOKEN_MARK = 'token';
 const TOKEN =
   'eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MjM1MDI2OTA1MzAwOTkyMDAiLCJzdWIiOiJ7XCJvcGVuSWRcIjo1MjM1MDI2OTA1MzAwOTkyMDAsXCJwYXJ0bmVyXCI6MTAwMDAwfSIsImlzcyI6IkZFIiwiaWF0IjoxNTQ0OTQ2OTgxLCJleHAiOjE1NDU1NTE3ODF9.StBRQZNOMj3RjN1i4A16yQl4-0k1tPb__a5ihJt7clo';
+
 const defaultOptions = {
   headers: {
     'Content-Type': 'application/json',
     'partner': 100000,
     'version': 'v1.0',
     'sign': '',
-    'token': TOKEN
+    // 'token': TOKEN
+    'token': ''
   },
   //   mode: "no-cors",
   credentials: 'same-origin',
@@ -33,9 +36,7 @@ export const request = {
 
     url = this.normalizeRestfulParams(url, options);
 
-    let tokenFromNative = '';
-
-    let token = tokenFromNative || TOKEN;
+    let token = localStorage.getItem(TOKEN_MARK) || TOKEN;
 
     const ops = { ...defaultOptions };
     ops.headers.token = token;
