@@ -1,0 +1,20 @@
+@import "../../scss/mixins";
+
+.test-mock-page-wrapper {
+  .module {
+    margin: px2rem(30) px2rem(30) 0 px2rem(30);
+    padding-top: px2rem(10);
+    padding-bottom: px2rem(10);
+    text-align: left;
+    border-bottom: px2rem(1) solid #BBBBBB;
+    color: #BBBBBB;
+    & > input {
+      margin-left: px2rem(10);
+      font-size: px2rem(16);
+      &::placeholder {
+        color: #BBBBBB;
+        font-size: px2rem(16);
+      }
+    }
+  }
+}
