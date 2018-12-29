@@ -26,7 +26,7 @@ class App extends Component {
             <Route exact path="/card-package" component={CardPackageAsync}/>
             <Route exact path="/card-list" component={CardListAsync}/>
             <Route exact path="/coupon-list" component={CouponListAsync}/>
-            <Route exact path="/card-detail" component={CardDetailAsync}/>
+            <Route exact path="/card-detail/:id" component={CardDetailAsync}/>
           </Switch>
         </Router>
       </div>

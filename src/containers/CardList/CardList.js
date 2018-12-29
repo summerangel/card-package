@@ -76,8 +76,8 @@ export default class CardList extends Component {
     };
 
     handleClickGo = (id) => {
-        // window.location.href = `/card/card-detail/${id}`;
-        window.location.href = `/card/card-detail`;
+        window.location.href = `/card/card-detail/${id}`;
+        // window.location.href = `/card/card-detail`;
     };
 
     render() {
